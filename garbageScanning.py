@@ -3,7 +3,6 @@ import cv2;
 import os;
 import time;
 import serial;
-import time;
 
 # Change the port name to match the port used by your Arduino
 port = '/dev/cu.usbmodem101'
