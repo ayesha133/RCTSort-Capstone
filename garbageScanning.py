@@ -1,7 +1,16 @@
 from ultralytics import YOLO
 import cv2;
 import os;
-import time
+import time;
+import serial;
+
+# Change the port name to match the port used by your Arduino
+port = '/dev/cu.usbmodem101'
+baud_rate = 9600
+
+# Open serial port
+arduino = serial.Serial(port, baud_rate, timeout=1)
+time.sleep(2)  # Allow time for Arduino to reset after connection
 
 dir_path = 'img'
 baseName = 'camera_capture'
@@ -84,13 +93,13 @@ def assignArduinoResult(classArray): #this function assigns the numerical value 
             arduinoResult = '2'
         
         elif item == 'CARDBOARD' or item == 'PAPER': #recycling
-            arduinoResult = '0'
+            arduinoResult = '1'
 
         elif item == 'GLASS' or item == 'METAL' or item == 'PLASTIC': #garbage
             arduinoResult = '0'
 
         else: #just put in garbage >.<
-            arduinoResult = '1'
+            arduinoResult = '0'
 
     return arduinoResult
 
@@ -116,6 +125,8 @@ if __name__ == "__main__":
 
     print(f"final results {classArray}")
     print(finalResult_forArduino)
+
+    arduino.write(str(finalResult_forArduino).encode())
 
 #---------HOW TO READ value from text file in another file ------------
 # with open('arduino_result.txt', 'r') as f:
