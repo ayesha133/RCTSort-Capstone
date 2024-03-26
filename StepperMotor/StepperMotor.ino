@@ -38,21 +38,21 @@ void rotateToAngle(int targetAngle){
 
 void rotateBackAndForth(int steps){
   digitalWrite(DIR_PIN, HIGH); // Set direction
-  for(int i = 0; i < steps; i++) {
+  for(int i = 0; i < steps+33; i++) {
     digitalWrite(STEP_PIN, HIGH);
-    delayMicroseconds(500); // Adjust speed by changing delay
+    delayMicroseconds(10000); // Adjust speed by changing delay
     digitalWrite(STEP_PIN, LOW);
-    delayMicroseconds(500); // Adjust speed by changing delay
+    delayMicroseconds(10000); // Adjust speed by changing delay
   }
-  delay(5000); // Wait before reversing direction
+  delay(10000); // Wait before reversing direction
   
   // Rotate counterclockwise
   digitalWrite(DIR_PIN, LOW); // Set direction
-  for(int i = 0; i < steps; i++) {
+  for(int i = 0; i < steps+33; i++) {
     digitalWrite(STEP_PIN, HIGH);
-    delayMicroseconds(500); // Adjust speed by changing delay
+    delayMicroseconds(10000); // Adjust speed by changing delay
     digitalWrite(STEP_PIN, LOW);
-    delayMicroseconds(500); // Adjust speed by changing delay
+    delayMicroseconds(10000); // Adjust speed by changing delay
   }
   delay(5000); 
 }
