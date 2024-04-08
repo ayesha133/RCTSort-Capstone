@@ -7,7 +7,7 @@ cap.set(3, 640)
 cap.set(4, 480)
 
 # model
-model = YOLO("yolo-Weights/yolov8n.pt") #determine when to restart #set limit of 5 seconds? take maximum of output, result = max(result, item)
+model = YOLO("yolo-Weights/newModel.pt") #determine when to restart #set limit of 5 seconds? take maximum of output, result = max(result, item)
 
 #store input. Strictly 1 item at a time. 
 #what would output be given an undefined? - garbage i guess lol
@@ -19,18 +19,8 @@ model = YOLO("yolo-Weights/yolov8n.pt") #determine when to restart #set limit of
 #if input something like juice box, person -> need to have code to filter out any invalid inputs then send to chatgpt api
 
 # object classes
-classNames = ["person", "bicycle", "car", "motorbike", "aeroplane", "bus", "train", "truck", "boat",
-              "traffic light", "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat",
-              "dog", "horse", "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella",
-              "handbag", "tie", "suitcase", "frisbee", "skis", "snowboard", "sports ball", "kite", "baseball bat",
-              "baseball glove", "skateboard", "surfboard", "tennis racket", "bottle", "wine glass", "cup",
-              "fork", "knife", "spoon", "bowl", "banana", "apple", "sandwich", "orange", "broccoli",
-              "carrot", "hot dog", "pizza", "donut", "cake", "chair", "sofa", "pottedplant", "bed",
-              "diningtable", "toilet", "tvmonitor", "laptop", "mouse", "remote", "keyboard", "cell phone",
-              "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors",
-              "teddy bear", "hair drier", "toothbrush"
-              ]
-
+classNames = ["Battery", "Biological", "Brown glass", "Cardboard", "Clothes", "Green Grass", "Metal", "Paper", "Plastic",
+              "Shoes", "Trash", "White glass"]
 
 while True:
     success, img = cap.read()
