@@ -92,10 +92,10 @@ def assignArduinoResult(classArray): #this function assigns the numerical value 
         if item == 'BIODEGRADABLE': #compost
             arduinoResult = '2'
         
-        elif item == 'CARDBOARD' or item == 'PAPER': #recycling
+        elif item == 'CARDBOARD' or item == 'PAPER' or item == 'PLASTIC' or item == 'METAL': #recycling
             arduinoResult = '1'
 
-        elif item == 'GLASS' or item == 'METAL' or item == 'PLASTIC': #garbage
+        elif item == 'GLASS': #garbage
             arduinoResult = '0'
 
         else: #just put in garbage >.<
