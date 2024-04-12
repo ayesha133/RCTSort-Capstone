@@ -6,6 +6,7 @@
 void setup() {
   pinMode(DIR_PIN, OUTPUT);
   pinMode(STEP_PIN, OUTPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin(9600);
 }
 
@@ -16,7 +17,13 @@ void loop() {
     Serial.println(incomingData);
 
     if(incomingData == "0"){
-      //Blink
+      for(int i=0; i < 5; i++){
+        digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+        delay(500);                      // wait for a second
+        digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+        delay(500);
+      }
+      
     }
     else if (incomingData == "1"){
       rotateToAngle(120);
@@ -38,17 +45,17 @@ void rotateToAngle(int targetAngle){
 
 void rotateBackAndForth(int steps){
   digitalWrite(DIR_PIN, HIGH); // Set direction
-  for(int i = 0; i < steps+33; i++) {
+  for(int i = 0; i < steps+55; i++) {
     digitalWrite(STEP_PIN, HIGH);
     delayMicroseconds(10000); // Adjust speed by changing delay
     digitalWrite(STEP_PIN, LOW);
     delayMicroseconds(10000); // Adjust speed by changing delay
   }
-  delay(10000); // Wait before reversing direction
+  delay(5000); // Wait before reversing direction
   
   // Rotate counterclockwise
   digitalWrite(DIR_PIN, LOW); // Set direction
-  for(int i = 0; i < steps+33; i++) {
+  for(int i = 0; i < steps+55; i++) {
     digitalWrite(STEP_PIN, HIGH);
     delayMicroseconds(10000); // Adjust speed by changing delay
     digitalWrite(STEP_PIN, LOW);
